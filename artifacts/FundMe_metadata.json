@@ -7,19 +7,6 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "ethvalue",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "fundme",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -52,7 +39,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Fundme.sol": "FundMe"
+			"Documents/Solidity/contracts/Fundme.sol": "FundMe"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -66,12 +53,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Fundme.sol": {
-			"keccak256": "0x0b7d064622fa8942f365df167e2c47827835980e018d582188463e77335c4c76",
+		"Documents/Solidity/contracts/Fundme.sol": {
+			"keccak256": "0xdde6381c1e33fb3bda5e1dea79dcd91e954dfa178048a8928a6a803b4ed2554a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://96fb5d4f063cd12603219daaef341acfe7707409af1aaede81bfdac99b8644d0",
-				"dweb:/ipfs/Qme6hVYu341hkCN5bRk9jWzJhhfsVEaB2qZnoZ7WFQS6aU"
+				"bzz-raw://ae20b9d197ae6feb1fe311cb0da2b25bf6eb98bc40a3f7747199581c10b373ac",
+				"dweb:/ipfs/QmPy7JjLwsqSX8oTC9qYSJ48NMCTLkjLdaDVziD2w3P1Zc"
 			]
 		}
 	},
