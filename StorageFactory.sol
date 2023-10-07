@@ -11,4 +11,12 @@ contract FactroryStorgage{
 
         simple.push(simpl);
     }
+
+    function sfStore(uint256 simpleStorageIndex, uint256 simpleStorageNumber) public {
+        simple[simpleStorageIndex].store(simpleStorageNumber);
+    }
+
+    function sfGet(uint256 simpleStorageIndex) public view returns(uint256){
+        return simple[simpleStorageIndex].retrieve();
+    }
 }
