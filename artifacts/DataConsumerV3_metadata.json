@@ -33,7 +33,7 @@
 			"kind": "user",
 			"methods": {
 				"constructor": {
-					"notice": "Network: Sepolia Aggregator: ETH/USD Address: 0x1b44F3514812d835EB1BDB0acB33d3fA3351Ee43"
+					"notice": "Network: Sepolia Aggregator: ETH/USD Address: 0x694AA1769357215DE4FAC081bf1f309aDC325306"
 				},
 				"getChainlinkDataFeedLatestAnswer()": {
 					"notice": "Returns the latest answer."
@@ -68,11 +68,11 @@
 			]
 		},
 		"Documents/Solidity/contracts/priceget.sol": {
-			"keccak256": "0x036f8dd3edf532b19e723b4689f60a2d30ebc55a682faaa84cd8433fa717debb",
+			"keccak256": "0x3cc3385492f38da53bacfed1aa2ee59b079606070c44815aa634f5d7764dafc7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://22598bcea7f9f826eb8ebaf8e949e7b2c4a22c222854ebab3e4d4b1a42f54d50",
-				"dweb:/ipfs/QmeMctN4EnRQ4ZJBRHhdvAWUUZbjFqkbVSfkXAxJ5ZCs5Q"
+				"bzz-raw://0ac8bd3878e8e5cd800e47faad3ee2f3d8beb7aae06b21894c317eb6d8ccac27",
+				"dweb:/ipfs/QmR9UCLkPz9WrostyoAK59NjxH6jyLZTQ3FretywwSHEPr"
 			]
 		}
 	},
