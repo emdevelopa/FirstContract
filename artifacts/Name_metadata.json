@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.8.8+commit.dddeac2f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Documents/Solidity/contracts/priceConverter.sol": "Name"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Documents/Solidity/contracts/priceConverter.sol": {
+			"keccak256": "0xad494327aa2962c36158a7d6131878ac900661abcde65a2cba7aa050225f550a",
+			"urls": [
+				"bzz-raw://74dc6cbf1a9bd2474dd3365dfef178d3971ffba8fd1fbf36b368b975ba155b77",
+				"dweb:/ipfs/QmVm7jEYhHBvkHtuSn4F7P8Dbc6ZDKPSqtJvnWK94pjDQr"
+			]
+		}
+	},
+	"version": 1
+}
