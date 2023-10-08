@@ -7,7 +7,7 @@ contract FundMe{
 
     function fundme() public payable {
 
-        require(msg.value / 1e18 >= minUSD, "Send more than 1 eth");
+        require(getConvertionRate(msg.value) >= minUSD, "Send more than 1 eth");
     }
 
     // Address: 0x694AA1769357215DE4FAC081bf1f309aDC325306
@@ -18,5 +18,12 @@ contract FundMe{
 
         return uint256(answer * 1e10);
         
+    }
+
+    function getConvertionRate(uint256 ethAmmount) public view returns(uint256){
+        uint256 ethPrice = getPrice();
+
+        uint256 ethAmountInUSD = (ethPrice * ethAmmount) / 1e18;
+        return ethAmountInUSD; 
     }
 }
