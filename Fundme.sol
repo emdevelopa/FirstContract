@@ -3,8 +3,7 @@ pragma solidity ^0.8.8;
 
 import "./priceConverter.sol";
 
-contract FundMe{
-
+contract FundMe {
     using priceConverter for uint256;
 
     uint256 public minUSD = 50 * 1e18;
@@ -14,42 +13,48 @@ contract FundMe{
     mapping(address => uint256) public addressToAmountFund;
 
     address public owner;
-    constructor(){
+
+    constructor() {
         owner = msg.sender;
     }
 
     function fundme() public payable {
-
-        require(msg.value.getConvertionRate() >= minUSD, "Send more than 1 eth");
+        require(
+            msg.value.getConvertionRate() >= minUSD,
+            "Send more than 1 eth"
+        );
         funders.push(msg.sender);
         addressToAmountFund[msg.sender] += msg.value;
     }
 
     function withdraw() public onlyOwner {
-        for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++){
+        for (
+            uint256 funderIndex = 0;
+            funderIndex < funders.length;
+            funderIndex++
+        ) {
             address funder = funders[funderIndex];
             addressToAmountFund[funder] = 0;
         }
 
         funders = new address[](0);
-        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
+        (bool callSuccess, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
 
         require(callSuccess, "Call failed");
     }
 
-    modifier onlyOwner{
-        require(msg.sender == owner,"The sender is not the owner");
+    modifier onlyOwner() {
+        require(msg.sender == owner, "The sender is not the owner");
         _;
     }
 
-    receive() external payable { 
+    receive() external payable {
         fundme();
     }
 
-    fallback() external payable { 
+    fallback() external payable {
         fundme();
     }
-
-   
 }
-
