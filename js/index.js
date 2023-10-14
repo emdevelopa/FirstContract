@@ -42,7 +42,7 @@ async function main() {
   const storeFavNum = await deployContract.store("9");
   // console.log(storeFavNum)
   await storeFavNum.wait(1)
-  log
+
 
   // console.log("Getting Favourite_Number.....");
   const getUpdatedFavNum = await deployContract.retrieve();
