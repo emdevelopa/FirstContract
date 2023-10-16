@@ -12,6 +12,7 @@ const {networkConfig} = require("../helper-hardhat-config")
 //   .catch((err) => {
 //     console.log(err);
 //     process.exit(0);
+// ,lkmk
 //   });
 
 
@@ -21,12 +22,20 @@ module.exports.default = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
     const chainId = network.config.chainId
-
-    const ethUsdPriceFeedAddress = networkConfig[chainId]["ethUsdPriceFeed"];
+    let ethUsdPriceFeedAddress
+    if (chainId == 31337) {
+        const ethUsdAggregator = await deployments.get("MockV3Aggregator");
+        ethUsdPriceFeedAddress = ethUsdAggregator.address
+    } else {
+        ethUsdPriceFeedAddress =
+          networkConfig[chainId]["ethUsdPriceFeed"];
+    }
 
     const fundme = await deploy("FundMe", {
         from: deployer,
-        args: [],
+        args: [ethUsdPriceFeedAddress],
         log:true 
     })
 }
+
+module.exports.tags = ["all", "fundme"]
