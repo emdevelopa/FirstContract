@@ -19,7 +19,7 @@ const {Verify} = require("../utils/verify")
 
 
 
-module.exports.default = async ({ getNamedAccounts, deployments }) => {
+module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
     const chainId = network.config.chainId
@@ -41,7 +41,6 @@ module.exports.default = async ({ getNamedAccounts, deployments }) => {
         waitConfirmations: network.config.blockConfirmations || 1,
     })
 
-    console.log(fundme.address);
     if (chainId != 31337 && process.env.ETHERSCAN_API_KEY) {
         await Verify(fundme.address,args)
     }

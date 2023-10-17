@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.8;
 
-
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "./PriceConverter.sol";
+
+error FundMe__NotOwner();
 
 contract FundMe {
     using priceConverter for uint256;
@@ -17,6 +19,11 @@ contract FundMe {
 
     AggregatorV3Interface public priceFeed;
 
+     modifier onlyOwner() {
+        if(msg.sender != owner) revert FundMe__NotOwner();
+        _;
+    }
+
     constructor(address priceFeedAddress) {
         owner = msg.sender;
 
@@ -25,10 +32,18 @@ contract FundMe {
         );
     }
 
+    // receive() external payable {
+    //     fundme();
+    // }
+
+    // fallback() external payable {
+    //     fundme();
+    // }
+
     function fundme() public payable {
         require(
             msg.value.getConvertionRate(priceFeed) >= minUSD,
-            "Send more than 1 eth"
+            "You need to spend more ETH!"
         );
         funders.push(msg.sender);
         addressToAmountFund[msg.sender] += msg.value;
@@ -52,16 +67,7 @@ contract FundMe {
         require(callSuccess, "Call failed");
     }
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "The sender is not the owner");
-        _;
-    }
+   
 
-    receive() external payable {
-        fundme();
-    }
-
-    fallback() external payable {
-        fundme();
-    }
+  
 }
