@@ -6,19 +6,24 @@ const SEPOLIA_RPC_URL = process.env.RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const COINMARKETCAP_API = process.env.COINMARKETCAP_API || "key";
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
     sepolia: {
       url: SEPOLIA_RPC_URL,
       accounts: [PRIVATE_KEY],
-      // chainId: 11155111,
-      // blockConfirmations: 6,
+      chainId: 11155111,
+      blockConfirmations: 6,
     },
   },
   gasReporter: {
-    enabled: true,
+    enabled: false,
+    outputFile: "gas-report.txt",
     currency: "USD",
+    noColors: true,
+    coinmarketcap: COINMARKETCAP_API,
+    token: "MATIC",
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,

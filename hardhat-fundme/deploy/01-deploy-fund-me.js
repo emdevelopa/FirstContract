@@ -5,7 +5,8 @@
 // // calling of main function
 
 const { network } = require("hardhat");
-const {networkConfig} = require("../helper-hardhat-config")
+const { networkConfig } = require("../helper-hardhat-config")
+const {Verify} = require("../utils/verify")
 
 // main()
 //   .then(() => process.exit(1))
@@ -31,11 +32,20 @@ module.exports.default = async ({ getNamedAccounts, deployments }) => {
           networkConfig[chainId]["ethUsdPriceFeed"];
     }
 
+    const args = [ethUsdPriceFeedAddress];
+
     const fundme = await deploy("FundMe", {
         from: deployer,
-        args: [ethUsdPriceFeedAddress],
-        log:true 
+        args: args,
+        log: true,
+        waitConfirmations: network.config.blockConfirmations || 1,
     })
+
+    console.log(fundme.address);
+    if (chainId != 31337 && process.env.ETHERSCAN_API_KEY) {
+        await Verify(fundme.address,args)
+    }
+    log("------------------------------------------------")
 }
 
 module.exports.tags = ["all", "fundme"]
