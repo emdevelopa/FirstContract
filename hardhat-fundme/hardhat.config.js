@@ -22,12 +22,12 @@ module.exports = {
     },
   },
   gasReporter: {
-    enabled: false,
+    enabled: true,
     outputFile: "gas-report.txt",
     currency: "USD",
     noColors: true,
     coinmarketcap: COINMARKETCAP_API,
-    token: "MATIC",
+    token: "ETH",
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
@@ -47,5 +47,8 @@ module.exports = {
     user: {
       default: 1,
     },
+  },
+  mocha: {
+    // timeout: 500000,
   },
 };
